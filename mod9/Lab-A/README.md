@@ -1,9 +1,3 @@
----
-lab:
-    title: '3: Migrating Hyper-V VMs to Azure by using Azure Migrate'
-    module: 'Module 3: Design for Migration'
----
-
 # Lab: Migrating Hyper-V VMs to Azure by using Azure Migrate
 # Student lab manual
 
@@ -48,7 +42,7 @@ Estimated Time: 120 minutes
 
 ## Lab Files
 
--  \\\\AZ304\\AllFiles\\Labs\\08\\azuredeploy30308suba.json
+-  \\AllFiles\\Labs\\08\\azuredeploy30308suba.json
 
 
 ### Exercise 0: Prepare the lab environment

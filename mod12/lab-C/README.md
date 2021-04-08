@@ -1,9 +1,3 @@
----
-lab:
-    title: '13: Implement Azure Logic Apps integration with Azure Event Grid'
-    module: 'Module 13: Design an Application Architecture'
----
-
 # Lab: Implement Azure Logic Apps integration with Azure Event Grid
 # Student lab manual
 
@@ -49,11 +43,11 @@ Estimated Time: 60 minutes
 
 ## Lab Files
 
--  \\\\AZ304\\AllFiles\\Labs\\04\\azuredeploy30304suba.json
+-  \\\\AllFiles\\Labs\\04\\azuredeploy30304suba.json
 
--  \\\\AZ304\\AllFiles\\Labs\\04\\azuredeploy30304rga.json
+-  \\\\AllFiles\\Labs\\04\\azuredeploy30304rga.json
 
--  \\\\AZ304\\AllFiles\\Labs\\04\\azuredeploy30304rga.parameters.json
+-  \\\\AllFiles\\Labs\\04\\azuredeploy30304rga.parameters.json
 
 ## Instructions
 

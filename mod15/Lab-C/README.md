@@ -99,11 +99,3 @@ Visit www.steven.com.my to get Steve's Contact info or
 Stay connected with Steve via LinkedIN :  www.linkedin.com/in/steven-nagendran-my 
 
 ### Cheers and Good Luck - Steven :) 
-
-### Please visit this link to complete the training Evaluation: 
-
-1. Microsoft Official training Delivered by MCT Evaluation:  https://www.metricsthatmatter.com/iversona54
- > **NOTE**: Please select **AZ-303 ( Mahalingam ), Steve's Surname (US naming convention)**
-
-2. Iverson Evaluation Link:  https://feedback.iverson.com.my/ifs
- > **NOTE**: The class ID is **24707**,  Must complete this eval to generate the certificate of Attendance. Make sure you use a valid email address, certificates will be delivered via email. 

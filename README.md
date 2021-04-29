@@ -21,16 +21,16 @@
     1. AZ-104 Microsoft Azure Administrator
     1. AZ-500 Azure Security Technologies
 
-- You may Clone this repo to your Workstation , you can download and install GitHub Desktop and use GitHub Desktop to clone this entire repo, Lab instruction may ask you to upload lab files from your Workstation to Azure Cloud Shell, so, having a copy of this hub on your workstation is an added advantage.
-
-- If you are using a non Administrator Privileged Workstation, you may not able to install required softwares, in this case, it is recommended to use Azure Cloud Shell ( you can clone this in Azure Cloud Shell )
-
 #### **REQUIREMENTS**
 - To use all the labs in this repo, you need the following Software / Hardware :
     1. Azure Pass Code ( will be emailed to you )
     1. New Azure Portal Access ( will be enabled with Azure Pass )
     1. A workstation with above 3Mbps bandwidth Internet Connection
     1. Disable any VPN connection on your workstation , as this may degrade connection to Azure Pass Portal
+
+- You may Clone this repo to your Workstation , you can download and install GitHub Desktop and use GitHub Desktop to clone this entire repo, Lab instruction may ask you to upload lab files from your Workstation to Azure Cloud Shell, so, having a copy of this hub on your workstation is an added advantage.
+
+- If you are using a non Administrator Privileged Workstation, you may not able to install required softwares, in this case, it is recommended to use Azure Cloud Shell ( you can clone this in Azure Cloud Shell )
 
 #### **WARNING**
 - Given the **dynamic** nature of Microsoft Azure cloud tools, you might experience Azure UI changes after the development of this training content. These changes might cause the lab instructions and lab steps to not match up.

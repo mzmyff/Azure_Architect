@@ -28,7 +28,7 @@
     1. A workstation with above 3Mbps bandwidth Internet Connection
     1. Disable any VPN connection on your workstation , as this may degrade connection to Azure Pass Portal
 
-- You may Clone this repo to your Workstation , you can download and install GitHub Desktop and use GitHub Desktop to clone this entire repo, Lab instruction may ask you to upload lab files from your Workstation to Azure Cloud Shell, so, having a copy of this hub on your workstation is an added advantage.
+- You may Clone this repo to your Workstation , you can download and install GitHub Desktop and use GitHub Desktop to clone this entire repo, Lab instruction may ask you to upload lab files from your Workstation to Azure Cloud Shell, so, having a copy of this repo on your workstation is an added advantage.
 
 - If you are using a non Administrator Privileged Workstation, you may not able to install required softwares, in this case, it is recommended to use Azure Cloud Shell ( you can clone this in Azure Cloud Shell )
 

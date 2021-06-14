@@ -34,7 +34,7 @@ In this task, you will deploy three virtual machines, each into a separate virtu
 1. From the Cloud Shell pane, run the following to create the first resource group that will be hosting the first virtual network and the pair of virtual machines 
 
    ```pwsh
-   $location = 'southeastasia'
+   $location = 'eastasia'
 
    $rgName = 'az104-05-rg0'
 
@@ -50,6 +50,8 @@ In this task, you will deploy three virtual machines, each into a separate virtu
 1. From the Cloud Shell pane, run the following to create the second resource group that will be hosting the second virtual network and the second virtual machine
 
    ```pwsh
+   $location = 'eastasia'
+
    $rgName = 'az104-05-rg1'
 
    New-AzResourceGroup -Name $rgName -Location $location

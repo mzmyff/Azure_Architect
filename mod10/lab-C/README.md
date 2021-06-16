@@ -1,4 +1,5 @@
-# Lab: Azure Sentinel
+
+# Lab : Azure Sentinel
 # Student lab manual
 
 ## Lab scenario
@@ -9,7 +10,7 @@ You have been asked to create a proof of concept of Azure Sentinel-based threat 
 - Add built in and custom alerts 
 - Review how Playbooks can be used to automate a response to an incident.
 
-> For all the resources in this lab, we are using the **Southeast Asia** region. Verify with your instructor this is the region to use for class. 
+> For all the resources in this lab, we are using the **East US** region. Verify with your instructor this is the region to use for class. 
 
 ## Lab objectives
 
@@ -44,9 +45,9 @@ In this task, you will on-board Azure Sentinel and connect the Log Analytics wor
 
 1. In the Azure portal, in the **Search resources, services, and docs** text box at the top of the Azure portal page, type **Azure Sentinel** and press the **Enter** key.
 
-1. On the **Azure Sentinel** blade, click **Connect workspace**.
+1. On the **Azure Sentinel** blade, click **+ New**.
 
-1. On the **Choose a workspace to add to Azure Sentinel** blade, select the Log Analytics workspace you created in the Azure Monitor lab and click **Add Azure Sentinel**.
+1. On the **Add Azure Sentinel to a workspace** blade, select the Log Analytics workspace you created in the Azure Monitor lab and click **Add**.
 
     >**Note**: Azure Sentinel has very specific requirements for workspaces. For example, workspaces created by Azure Security Center can not be used. Read more at [Quickstart: On-board Azure Sentinel](https://docs.microsoft.com/en-us/azure/sentinel/quickstart-onboard)
 	
@@ -56,7 +57,7 @@ In this task, you will configure Sentinel to use the Azure Activity data connect
 
 1. In the Azure portal, on the **Azure Sentinel \| Overview** blade, in the **Configuration** section, click **Data connectors**. 
 
-1. On the **Azure Sentinel \| Data connectors** blade, review the list of available connectors, click the entry representing the **Azure Activity** connector, review its description, and then click **Open connector page**.
+1. On the **Azure Sentinel \| Data connectors** blade, review the list of available connectors, click the entry representing the **Azure Activity** connector (scroll to the right if needed), review its description, and then click **Open connector page**.
 
 1. On the **Azure Activity** blade, click the **Configure Azure Activity logs** link.
 
@@ -66,7 +67,7 @@ In this task, you will configure Sentinel to use the Azure Activity data connect
 
 1. On the **Azure Sentinel \| Data connectors** blade, click **Azure Activity**. 
 
-1. Verify that the **Azure Activity** pane displays the **Data received** graph. 
+1. Verify that the **Azure Activity** pane displays the **Data received** graph (you might have to refresh the browser page). 
 
     >**Note**: It may take over 5 minutes before the graph will reflect the any events included in the Azure Activity logs.
 
@@ -80,7 +81,7 @@ In this task, you will review and create a rule that uses the Azure Activity dat
 
     >**Note**: Review the types of rules you can create. Each rule is associated with a specific Data Source.
 
-1. In the listing of rules, type **Suspicious** into the search bar form and click the **Suspicious number of resource creation or deployment** entry associated with the **Azure Activity** data source. And then, in the pane displaying the rule template properties, click **Create rule**.
+1. In the listing of rule templates, type **Suspicious** into the search bar form and click the **Suspicious number of resource creation or deployment** entry associated with the **Azure Activity** data source. And then, in the pane displaying the rule template properties, click **Create rule** (scroll to the right of the page if needed).
 
     >**Note**: This rule has the medium severity. 
 
@@ -122,7 +123,7 @@ In this task, you will create a playbook. A security playbook is a collection of
     |Playbook Name|**Change-Incident-Severity**|
     |User Name|your email address|
 
-1. Click the **I agree to the terms and conditions stated above** checkbox, and click **Purchase**.
+1. Click **Review + create** and then click **Create**.
 
     >**Note**: Wait for the deployment to complete.
 
@@ -142,7 +143,9 @@ In this task, you will create a playbook. A security playbook is a collection of
 
 1. When prompted, sign in with the user account that has the Owner or Contributor role in the Azure subscription you are using for this lab.
 
-1. Repeat the previous three steps in for each of other **Connections**.
+1. Click the second **Connection** step and, in the list of connections, select the second entry, representing the connection you created in the previous step.
+
+1. Repeat the previous steps in for the remaining two **Connection** steps.
 
     >**Note**: Ensure there are no warnings displayed on any of the steps.
 
@@ -184,7 +187,7 @@ In this task, you will create a playbook. A security playbook is a collection of
 
 1. On the **Incident settings** tab of the **Analytic rule wizard - Create new rule** blade, accept the default settings and click **Next: Automated response >**. 
 
-1. On the **Automated response** tab of the **Analytic rule wizard - Create new rule** blade, select the **Change-Incident-Severity** checkbox and click **Next: Review >**. 
+1. On the **Automated response** tab of the **Analytic rule wizard - Create new rule** blade, in the **Alert automation** dropdown list, select the checkbox next to the **Change-Incident-Severity** entry and click **Next: Review >**. 
 
 1. On the **Review and create** tab of the **Analytic rule wizard - Create new rule** blade, click **Create**.
 
@@ -202,7 +205,7 @@ In this task, you will create a playbook. A security playbook is a collection of
 
 1. In the Azure portal, in the **Search resources, services, and docs** text box at the top of the Azure portal page, type **Activity log** and press the **Enter** key.
 
-1. On the **Activity log** blade, note an **Delete JIT Network Access Policies** entry. 
+1. Navigate to the **Activity log** blade, note an **Delete JIT Network Access Policies** entry. 
 
     >**Note**: This may take a minute to appear. 
 

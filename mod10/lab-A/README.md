@@ -9,7 +9,7 @@ You have been asked to create a proof of concept of monitoring virtual machine p
 - Show what telemetry and logs can be collected.
 - Show how the data can be used and queried. 
 
-> For all the resources in this lab, we are using the **southeastasia** region. Verify with your instructor this is the region to use for class. 
+> For all the resources in this lab, we are using the **East US** region. Verify with your instructor this is the region to use for class. 
 
 ## Lab objectives
 
@@ -42,15 +42,15 @@ In this exercise, you will complete the following tasks:
 1. In the PowerShell session within the Cloud Shell pane, run the following to create a resource group that will be used in this lab:
   
     ```powershell
-    New-AzResourceGroup -Name AZ500LAB131415 -Location 'southeastasia'
+    New-AzResourceGroup -Name AZ500LAB131415 -Location 'EastUS'
     ```
 
-    >**Note**: This resource group will be used for labs A, B, and C in mod10
+    >**Note**: This resource group will be used for labs 13, 14, and 15. 
 
 1. In the PowerShell session within the Cloud Shell pane, run the following to create a new Azure virtual machine. 
 
     ```powershell
-    New-AzVm -ResourceGroupName "AZ500LAB131415" -Name "myVM" -Location 'southeastasia' -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress" -OpenPorts 80,3389
+    New-AzVm -ResourceGroupName "AZ500LAB131415" -Name "myVM" -Location 'EastUS' -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress" -OpenPorts 80,3389
     ```
 
 1.  When prompted for credentials:
@@ -76,7 +76,7 @@ In this task, you will create a Log Analytics workspace.
 
 1. In the Azure portal, in the **Search resources, services, and docs** text box at the top of the Azure portal page, type **Log Analytics workspaces** and press the **Enter** key.
 
-1. On the **Log Analytics workspaces** blade, click **+ Add**.
+1. On the **Log Analytics workspaces** blade, click **+ New**.
 
 1. On the **Basics** tab of the **Create Log Analytics workspace** blade, specify the following settings (leave others with their default values):
 
@@ -85,7 +85,7 @@ In this task, you will create a Log Analytics workspace.
     |Subscription|the name of the Azure subscription you are using in this lab|
     |Resource group|**AZ500LAB131415**|
     |Name|any valid, globally unique name|
-    |Region|**Southeast Asia**|
+    |Region|**(US) East US**|
 
 1. Click **Next: Pricing tier >**, on the **Pricing tier** tab of the **Create Log Analytics workspace** blade, accept the default **Pay-as-you-go (Per GB 2018)** pricing tier, and click **Review + create**.
 
@@ -115,25 +115,25 @@ In this task, you will configure collection of the Windows System log and severa
 
 1. In the Azure portal, navigate back to the Log Analytics workspace you created earlier in this exercise.
 
-1. On the Log Analytics workspace blade, in the **Settings** section, click **Advanced settings**.
+1. On the Log Analytics workspace blade, in the **Settings** section, click **Agents configuration**.
 
-1. On the **Advanced Settings** blade, click **Data** and review the available options including Windows Event Logs, Windows Performance Counters, Linux Performance Counters, IIS Logs, and Syslog. 
+1. On the **Agents configuration** blade, review the configurable settings including Windows Event Logs, Windows Performance Counters, Linux Performance Counters, IIS Logs, and Syslog. 
 
-1. Ensure that **Windows Event Logs** is selected, in the **Collect events from the following event logs** text box, type **System** and then click **+**.
+1. Ensure that **Windows Event Logs** is selected, click **+ Add windows event log**, in the listing of event log types, select **System** and then click **+**.
 
     >**Note**: This is how you add event logs to the workspace. Other choices include, for example, **Hardware events** or **Key Management Service**.  
 
-1. Deselect the **INFORMATION** checkbox, leaving the **ERROR** and **WARNING** check boxes selected.
+1. Deselect the **Information** checkbox, leaving the **Error** and **Warning** check boxes selected.
 
-1. Click **Windows Performance Counters**.
+1. Click **Windows Performance Counters**, click **+ Add performance counter**, review the listing of available performance counters, and add the following ones:
 
-    >**Note**: There is a suggested list of performance counters. You can customize this list. 
+    - Process(\*)\%Processor Time
+    - Event Tracing for Windows\Total Memory Usage --- Non-Paged Pool
+    - Event Tracing for Windows\Total Memory Usage --- Paged Pool
 
-1. Click **Add the selected performance counters**. 
-
-    >**Note**: The counters are added and configured with 10 second collection sample interval.
+    >**Note**: The counters are added and configured with 60 second collection sample interval.
   
-1. On the **Advanced Settings** blade, click **Save** at the top of page and then, to acknowledge the confirmation, click **OK**.
+1. On the **Agents configuration** blade, click **Apply**.
 
 #### Task 5: View and query collected data
 
@@ -143,13 +143,11 @@ In this task, you will run a log search on your data collection.
 
 1. On the Log Analytics workspace blade, in the **General** section, click **Logs**.
 
-1. On the Logs blade, click **Get started**.  
+1. If needed, close the **Welcome to Log Analysis** window. 
 
-1. On the **Example queries** pane, click **Virtual machine**
+1. On the **Queries** pane, in the **All Queries** column, scroll down to the bottom of the list of resource types, and click **Virtual machines**
     
-    >**Note**: If you dont see **Virtual machine**, click Resource Type filter and select **Virtual machines**
-
-1. Review the list of predefined queries, identify the one you want to test, and click the corresponding **Run** button.
+1. Review the list of predefined queries, select **Memory and CPU usage**, and click the corresponding **Run** button.
 
     >**Note**: You can start with the query **Virtual machine available memory**. If you don't get any results check the scope is set to virtual machine
 
@@ -163,11 +161,23 @@ In this task, you will run a log search on your data collection.
 
     >**Note**: You have the option of displaying data in different formats. You also have the option of creating an alert rule based on the results of the query.
 
+    >**Note**: You can generate some additional load on the Azure VM you deployed earlier in this lab by using the following steps:
+
+    1. Navigate to the Azure VM blade.
+    1. On the Azure VM blade, in the **Operations** section, select **Run command**, on the **Run Command Script** blade, type the following script, and click **Run**:
+    2. 
+       ```cmd
+       cmd
+       :loop
+       dir c:\ /s > SWAP
+       goto loop
+       ```
+       
+    1. Switch back ot the Log Analytics blade and re-run the query. You might need to wait a few minutes for data to be collected and re-run the query again.
+
 > Results: You used a Log Analytics workspace to configure data sources and query logs. 
 
 **Clean up resources**
 
->**Note**: Do not remove the resources from this lab as they are needed for the Azure Security Center lab( lab B ) and the Azure Sentinel lab ( lab C)
-
->**Note**: Please continue to lab-b 
+>**Note**: Do not remove the resources from this lab as they are needed for the Azure Security Center lab and the Azure Sentinel lab.
  

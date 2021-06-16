@@ -61,7 +61,7 @@ In this task, you will identify a DNS name for your Azure VM deployment.
 
 In this task, you will deploy an Azure VM that will host an Active Directory domain controller
 
-1. Open another browser tab in the same browser window and navigate to the [https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain). 
+1. Open another browser tab in the same browser window and navigate to the [https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain](`https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain`). 
 
 1. On the **Create a new Windows VM and create a new AD Forest, Domain and DC** page, click **Deploy to Azure**. This will automatically redirect the browser to the **Create an Azure VM with a new AD Forest** blade in the Azure portal.
 
@@ -75,11 +75,11 @@ In this task, you will deploy an Azure VM that will host an Active Directory dom
    |---|---|
    |Subscription|the name of you Azure subscription|
    |Resource group|click **Create new** and type the name **AZ500LAB06**|
-   |Dns Prefix|the DNS hostname you identified in the previous task|
-   |Location|the Azure region you identified in the previous task|
+   |Region|the Azure region you identified in the previous task|
    |Admin Username|**Student**|
    |Admin Password|**Pa55w.rd1234**|
    |Domain Name|**adatum.com**|
+   |Dns Prefix|the DNS hostname you identified in the previous task|
    |VM Size|**Standard_D2s_v3**|
 
 1. On the **Create an Azure VM with a new AD Forest** blade, click **Review + create**, and then click **Create**.
@@ -121,7 +121,7 @@ In this task, you will create a new Azure AD tenant to use in this lab.
 
     >**Note**: The green check mark in the **Initial domain name** text box will indicate whether the domain name you typed in is valid and unique. (Record your initial domain name for later use).
 
-1. Click **Review + crate** and then click **Create**.
+1. Click **Review + create** and then click **Create**.
 
     >**Note**: Wait for the new tenant to be created. Use the **Notification** icon to monitor the deployment status. 
 
@@ -135,7 +135,7 @@ In this task, you will add your custom DNS name to the new Azure AD tenant.
 
     >**Note**: You may need to refresh the browser window if the **AdatumSync** entry does not appear in the **Directory + subscription** filter list.
 
-1. On the **AdatumSync** blade, in the in the **Manage** section, click **Custom domain names**.
+1. On the **AdatumSync \| Azure Active Directory** blade, in the **Manage** section, click **Custom domain names**.
 
 1. On the **AdatumSync \| Custom domain names** blade, click **+ Add custom domain**.
 
@@ -153,7 +153,7 @@ In this task, you will add a new Azure AD user and assign them to the Global Adm
 
 1. On the **Users \| All users** blade, click **+ New User**. 
 
-1. On the **New user** blade, ensure that the **Create user** option is selected, and specify the following settings (leave all others with their default values):
+1. On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings (leave all others with their default values) and click **Create**:
 
    |Setting|Value|
    |---|---|
@@ -205,7 +205,7 @@ In this task, you will connect to the Azure VM running AD DS domain controller a
 
 1. On the **adVM** blade, click **Connect** and, in the drop down menu, click **RDP**. 
 
-1. Click **Download RDP File** and use it to connect to the **adVM** Azure VM via Remote Desktop. When prompted to authenticate, provide the following credntials:
+1. In the **IP address** parameter, select **Load balancer public IP address**, then click **Download RDP File** and use it to connect to the **adVM** Azure VM via Remote Desktop. When prompted to authenticate, provide the following credntials:
 
    |Setting|Value|
    |---|---|
@@ -219,6 +219,8 @@ In this task, you will connect to the Azure VM running AD DS domain controller a
 1. In **Server Manager**, click **Local Server** and then click **IE Enhanced Security Configuration**.
 
 1. In the **Internet Explorer Enhanced Security Configuration** dialog box, set both options to **Off** and click **OK**.
+
+1. Start Internet Explorer, navigate to [https://www.microsoft.com/en-us/edge/business/download](`https://www.microsoft.com/en-us/edge/business/download`), download Microsoft Edge installation binaries, run the installation, and configure the web browser with the default settings.
 
 1. In **Server Manager**, click **Tools** and, in the drop-down menu, click **Active Directory Administrative Center**.
 
@@ -244,7 +246,7 @@ In this task, you will connect to the Azure VM running AD DS domain controller a
 
 In this task, you will install AD Connect on the virtual machine. 
 
-1. Within the Remote Desktop session to **adVM**, start Internet Explorer, navigate to the [Azure portal](https://portal.azure.com), and sign in by using the **syncadmin** user account you created the previous exercise. When prompted, specify the full user name you recorded and the **Pa55w.rd1234** password.
+1. Within the Remote Desktop session to **adVM**, use Microsoft Edge to navigate to the [Azure portal](https://portal.azure.com), and sign in by using the **syncadmin** user account you created the previous exercise. When prompted, specify the full user name you recorded and the **Pa55w.rd1234** password.
 
 1. In the Azure portal, in the **Search resources, services, and docs** text box at the top of the Azure portal page, type **Azure Active Directory** and press the **Enter** key.
 
@@ -300,7 +302,7 @@ In this task, you will install AD Connect on the virtual machine.
 
 In this task, you will verify that directory synchronization is working. 
 
-1. Within the Remote Desktop session to **adVM**, in the Internet Explorer window displaying the Azure portal, navigate to the **Users - All users** blade of the Adatum Lab Azure AD tenant.
+1. Within the Remote Desktop session to **adVM**, in the Microsoft Edge window displaying the Azure portal, navigate to the **Users - All users** blade of the Adatum Lab Azure AD tenant.
 
 1. On the **Users \| All users** blade, note that the list of user objects includes the **aduser1** account. 
 
@@ -326,7 +328,7 @@ In this task, you will verify that directory synchronization is working.
     Start-ADSyncSyncCycle -PolicyType Delta
     ```
 
-1. Switch to the Internet Explorer window displaying the **aduser1 \| Profile** blade, refresh the page and note that the **Department** property is set to **Sales**.
+1. Switch to the Microsoft Edge window displaying the **aduser1 \| Profile** blade, refresh the page and note that the **Department** property is set to **Sales**.
 
     >**Note**: You might need to wait for another minute and refresh the page again if the **Department** attribute remains not set.
 
@@ -369,7 +371,7 @@ In this task, you will verify that directory synchronization is working.
 
     >**Note**: Next, remove the Azure resources
 
-1. In the Azure portal, set the **Directory + subscription** filter to the the Azure AD tenant associated with the Azure subscription into which you deployed the **az500-04-vm1** Azure VM.
+1. In the Azure portal, set the **Directory + subscription** filter to the the Azure AD tenant associated with the Azure subscription into which you deployed the **adVM** Azure VM.
 
 1. In the Azure portal, open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. 
 
